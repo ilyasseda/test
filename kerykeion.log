@@ -1,0 +1,761 @@
+DEBUG:root:Starting Kerykeion
+WARNING:root:
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+INFO:root:Fetching timezone/coordinates from geonames
+DEBUG:requests_cache.backends:Initializing backend: sqlite cache/kerykeion_geonames_cache
+DEBUG:requests_cache.backends.base:Initialized SQLiteDict with serializer: SerializerPipeline(name=pickle, n_stages=2)
+DEBUG:requests_cache.backends.sqlite:Opening connection to C:\Users\musta\OneDrive\Masaüstü\swiss\cache\kerykeion_geonames_cache.sqlite:responses
+DEBUG:requests_cache.backends.base:Initialized SQLiteDict with serializer: None
+DEBUG:requests_cache.backends.sqlite:Opening connection to C:\Users\musta\OneDrive\Masaüstü\swiss\cache\kerykeion_geonames_cache.sqlite:redirects
+DEBUG:root:Requesting data from geonames basic: http://api.geonames.org/searchJSON?q=Atlanta&country=USA&username=century.boy&maxRows=1&style=SHORT&featureClass=A&featureClass=P
+DEBUG:requests_cache.policy.actions:Cache directives from request headers: CacheDirectives()
+DEBUG:requests_cache.policy.actions:Pre-read cache checks: Passed
+DEBUG:requests_cache.policy.actions:Post-read cache actions: CacheActions(expire_after=86400, send_request=True)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.geonames.org:80
+DEBUG:urllib3.connectionpool:http://api.geonames.org:80 "GET /searchJSON?q=Atlanta&country=USA&username=century.boy&maxRows=1&style=SHORT&featureClass=A&featureClass=P HTTP/11" 200 None
+DEBUG:requests_cache.policy.actions:Pre-write cache checks: Passed
+DEBUG:root:Response from GeoNames: {'totalResultsCount': 2939, 'geonames': [{'lng': '-84.38798', 'geonameId': 4180439, 'countryCode': 'US', 'name': 'Atlanta', 'toponymName': 'Atlanta', 'lat': '33.749', 'fcl': 'P', 'fcode': 'PPLA'}]}
+DEBUG:root:Requesting data from GeoName timezones: http://api.geonames.org/timezoneJSON?lat=33.749&lng=-84.38798&username=century.boy
+DEBUG:requests_cache.policy.actions:Cache directives from request headers: CacheDirectives()
+DEBUG:requests_cache.policy.actions:Pre-read cache checks: Passed
+DEBUG:requests_cache.policy.actions:Post-read cache actions: CacheActions(expire_after=86400)
+2024-08-18 12:11:47,558 - DEBUG - Starting Kerykeion
+2024-08-18 12:11:47,559 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:11:47,559 - INFO - Fetching timezone/coordinates from geonames
+2024-08-18 12:11:47,559 - DEBUG - Initializing backend: sqlite cache/kerykeion_geonames_cache
+2024-08-18 12:11:47,559 - DEBUG - Initialized SQLiteDict with serializer: SerializerPipeline(name=pickle, n_stages=2)
+2024-08-18 12:11:47,560 - DEBUG - Opening connection to C:\Users\musta\OneDrive\Masaüstü\swiss\cache\kerykeion_geonames_cache.sqlite:responses
+2024-08-18 12:11:47,567 - DEBUG - Initialized SQLiteDict with serializer: None
+2024-08-18 12:11:47,567 - DEBUG - Opening connection to C:\Users\musta\OneDrive\Masaüstü\swiss\cache\kerykeion_geonames_cache.sqlite:redirects
+2024-08-18 12:11:47,573 - DEBUG - Requesting data from geonames basic: http://api.geonames.org/searchJSON?q=Antalya&country=TR&username=century.boy&maxRows=1&style=SHORT&featureClass=A&featureClass=P
+2024-08-18 12:11:47,574 - DEBUG - Cache directives from request headers: CacheDirectives()
+2024-08-18 12:11:47,574 - DEBUG - Pre-read cache checks: Passed
+2024-08-18 12:11:47,575 - DEBUG - Post-read cache actions: CacheActions(expire_after=86400, send_request=True)
+2024-08-18 12:11:47,575 - DEBUG - Starting new HTTP connection (1): api.geonames.org:80
+2024-08-18 12:11:48,173 - DEBUG - http://api.geonames.org:80 "GET /searchJSON?q=Antalya&country=TR&username=century.boy&maxRows=1&style=SHORT&featureClass=A&featureClass=P HTTP/11" 200 68
+2024-08-18 12:11:48,173 - DEBUG - Pre-write cache checks: Passed
+2024-08-18 12:11:48,178 - DEBUG - Response from GeoNames: {'status': {'message': 'net/geonames/country/CountryInfo', 'value': 12}}
+2024-08-18 12:11:48,178 - ERROR - Error serializing data maybe wrong username? Details: 'geonames'
+2024-08-18 12:11:48,178 - ERROR - Error in fetching timezone: 'lat'
+2024-08-18 12:11:48,178 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 19, in <module>
+    ilyas = AstrologicalSubject("Ýlyas", 1999, 8, 31, 18, 30, "Antalya", "TR", houses_system_identifier="P")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\astrological_subject.py", line 330, in __init__
+    self._fetch_and_set_tz_and_coordinates_from_geonames()
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\astrological_subject.py", line 391, in _fetch_and_set_tz_and_coordinates_from_geonames
+    raise KerykeionException("No data found for this city, try again! Maybe check your connection?")
+kerykeion.kr_types.kerykeion_exception.KerykeionException: No data found for this city, try again! Maybe check your connection?
+2024-08-18 12:12:15,488 - DEBUG - Starting Kerykeion
+2024-08-18 12:12:15,488 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:12:15,489 - INFO - Fetching timezone/coordinates from geonames
+2024-08-18 12:12:15,489 - DEBUG - Initializing backend: sqlite cache/kerykeion_geonames_cache
+2024-08-18 12:12:15,489 - DEBUG - Initialized SQLiteDict with serializer: SerializerPipeline(name=pickle, n_stages=2)
+2024-08-18 12:12:15,489 - DEBUG - Opening connection to C:\Users\musta\OneDrive\Masaüstü\swiss\cache\kerykeion_geonames_cache.sqlite:responses
+2024-08-18 12:12:15,492 - DEBUG - Initialized SQLiteDict with serializer: None
+2024-08-18 12:12:15,492 - DEBUG - Opening connection to C:\Users\musta\OneDrive\Masaüstü\swiss\cache\kerykeion_geonames_cache.sqlite:redirects
+2024-08-18 12:12:15,494 - DEBUG - Requesting data from geonames basic: http://api.geonames.org/searchJSON?q=Antalya&country=TR&username=century.boy&maxRows=1&style=SHORT&featureClass=A&featureClass=P
+2024-08-18 12:12:15,495 - DEBUG - Cache directives from request headers: CacheDirectives()
+2024-08-18 12:12:15,495 - DEBUG - Pre-read cache checks: Passed
+2024-08-18 12:12:15,499 - DEBUG - Post-read cache actions: CacheActions(expire_after=86400)
+2024-08-18 12:12:15,499 - DEBUG - Response from GeoNames: {'status': {'message': 'net/geonames/country/CountryInfo', 'value': 12}}
+2024-08-18 12:12:15,499 - ERROR - Error serializing data maybe wrong username? Details: 'geonames'
+2024-08-18 12:12:15,500 - ERROR - Error in fetching timezone: 'lat'
+2024-08-18 12:12:15,500 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 19, in <module>
+    ilyas = AstrologicalSubject("Ýlyas", 1999, 8, 31, 18, 30, "Antalya", "TR", houses_system_identifier="P")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\astrological_subject.py", line 330, in __init__
+    self._fetch_and_set_tz_and_coordinates_from_geonames()
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\astrological_subject.py", line 391, in _fetch_and_set_tz_and_coordinates_from_geonames
+    raise KerykeionException("No data found for this city, try again! Maybe check your connection?")
+kerykeion.kr_types.kerykeion_exception.KerykeionException: No data found for this city, try again! Maybe check your connection?
+2024-08-18 12:12:49,237 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 20, in <module>
+    ilyas = AstrologicalSubject("Ýlyas", 1999, 8, 31, 18, 30,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AstrologicalSubject.__init__() got an unexpected keyword argument 'houses_system'
+2024-08-18 12:13:24,146 - DEBUG - Starting Kerykeion
+2024-08-18 12:13:24,146 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:13:24,146 - INFO - No city specified, using London as default
+2024-08-18 12:13:24,146 - INFO - No nation specified, using GB as default
+2024-08-18 12:13:24,279 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:13:24,288 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:13:24,289 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:13:24,292 - DEBUG - planet: 0, degree: 157.78580503266105
+2024-08-18 12:13:24,292 - DEBUG - planet: 1, degree: 37.54929119436807
+2024-08-18 12:13:24,292 - DEBUG - planet: 2, degree: 150.01852125255965
+2024-08-18 12:13:24,292 - DEBUG - planet: 3, degree: 140.92229775282064
+2024-08-18 12:13:24,292 - DEBUG - planet: 4, degree: 238.65350948530235
+2024-08-18 12:13:24,292 - DEBUG - planet: 5, degree: 34.9157068542375
+2024-08-18 12:13:24,293 - DEBUG - planet: 6, degree: 47.17860426327571
+2024-08-18 12:13:24,293 - DEBUG - planet: 7, degree: 313.9001693405626
+2024-08-18 12:13:24,293 - DEBUG - planet: 8, degree: 302.0710770659934
+2024-08-18 12:13:24,293 - DEBUG - planet: 9, degree: 247.7812007344973
+2024-08-18 12:13:24,293 - DEBUG - planet: 10, degree: 132.7307647304622
+2024-08-18 12:13:24,293 - DEBUG - planet: 11, degree: 238.5143274220158
+2024-08-18 12:13:24,293 - DEBUG - planet: 12, degree: 318.2416125853921
+2024-08-18 12:13:24,293 - DEBUG - planet: 13, degree: 244.54589718531258
+2024-08-18 12:13:24,293 - DEBUG - planet: 14, degree: 249.75964580459274
+2024-08-18 12:13:24,293 - DEBUG - Jupiter, 76.67409426884541, 2.633584340130568
+2024-08-18 12:13:24,293 - DEBUG - Moon, 2.633584340130568, 9.629313068907642
+2024-08-18 12:13:24,293 - DEBUG - Saturn, 9.629313068907642, 85.5521604671865
+2024-08-18 12:13:24,293 - DEBUG - True_Node, 85.5521604671865, 8.191533022358442
+2024-08-18 12:13:24,293 - DEBUG - Venus, 8.191533022358442, 9.096223499739011
+2024-08-18 12:13:24,293 - DEBUG - Mercury, 9.096223499739011, 7.767283780101394
+2024-08-18 12:13:24,294 - DEBUG - Sun, 7.767283780101394, 80.72852238935477
+2024-08-18 12:13:24,294 - DEBUG - Chiron, 80.72852238935477, 0.13918206328654037
+2024-08-18 12:13:24,294 - DEBUG - Mars, 0.13918206328654037, 5.892387700010232
+2024-08-18 12:13:24,294 - DEBUG - Mc, 5.892387700010232, 3.235303549184721
+2024-08-18 12:13:24,294 - DEBUG - Pluto, 3.235303549184721, 1.9784450700954324
+2024-08-18 12:13:24,294 - DEBUG - Mean_Lilith, 1.9784450700954324, 52.31143126140066
+2024-08-18 12:13:24,294 - DEBUG - Neptune, 52.31143126140066, 11.829092274569234
+2024-08-18 12:13:24,294 - DEBUG - Uranus, 11.829092274569234, 4.341443244829463
+2024-08-18 12:13:24,294 - DEBUG - Asc, 4.341443244829463, 76.67409426884541
+2024-08-18 12:13:24,295 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 54, in <module>
+    chart.makeSVG()
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 584, in makeSVG
+    self.template = self.makeTemplate(minify)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 557, in makeTemplate
+    td = self._create_template_dictionary()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 549, in _create_template_dictionary
+    custom_format = dt.strftime('%Y-%-m-%-d %H:%M [%z]')  # Note the use of '-' to remove leading zeros
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+2024-08-18 12:29:28,450 - DEBUG - Starting Kerykeion
+2024-08-18 12:29:28,450 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:29:28,450 - INFO - No city specified, using London as default
+2024-08-18 12:29:28,450 - INFO - No nation specified, using GB as default
+2024-08-18 12:32:35,712 - DEBUG - Starting Kerykeion
+2024-08-18 12:32:35,712 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:32:35,713 - INFO - No city specified, using London as default
+2024-08-18 12:32:35,713 - INFO - No nation specified, using GB as default
+2024-08-18 12:32:35,845 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:32:35,846 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:32:35,847 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:32:35,850 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:32:35,850 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:32:35,850 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:32:35,850 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:32:35,851 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:32:35,851 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:32:35,851 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:32:35,851 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:32:35,851 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:32:35,851 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:32:35,851 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:32:35,851 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:32:35,851 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:32:35,851 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:32:35,851 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:32:35,851 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:32:35,851 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:32:35,851 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:32:35,852 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:32:35,852 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:32:35,852 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:32:35,852 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:32:35,852 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:32:35,852 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:32:35,852 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:32:35,852 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:32:35,852 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:32:35,852 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:32:35,852 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:32:35,852 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:32:35,853 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 38, in <module>
+    chart.makeSVG()
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 584, in makeSVG
+    self.template = self.makeTemplate(minify)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 557, in makeTemplate
+    td = self._create_template_dictionary()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 549, in _create_template_dictionary
+    custom_format = dt.strftime('%Y-%-m-%-d %H:%M [%z]')  # Note the use of '-' to remove leading zeros
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+2024-08-18 12:33:21,682 - DEBUG - Starting Kerykeion
+2024-08-18 12:33:21,682 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:33:21,890 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:33:21,892 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:33:21,893 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:33:21,899 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:33:21,899 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:33:21,899 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:33:21,900 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:33:21,900 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:33:21,900 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:33:21,900 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:33:21,900 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:33:21,900 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:33:21,900 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:33:21,900 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:33:21,901 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:33:21,901 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:33:21,901 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:33:21,901 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:33:21,901 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:33:21,901 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:33:21,901 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:33:21,901 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:33:21,901 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:33:21,901 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:33:21,902 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:33:21,902 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:33:21,902 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:33:21,902 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:33:21,902 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:33:21,902 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:33:21,902 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:33:21,902 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:33:21,902 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:33:21,904 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 39, in <module>
+    chart.makeSVG()
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 584, in makeSVG
+    self.template = self.makeTemplate(minify)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 557, in makeTemplate
+    td = self._create_template_dictionary()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 549, in _create_template_dictionary
+    custom_format = dt.strftime('%Y-%-m-%-d %H:%M [%z]')  # Note the use of '-' to remove leading zeros
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+2024-08-18 12:55:55,924 - DEBUG - Starting Kerykeion
+2024-08-18 12:55:55,924 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:55:58,259 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:55:58,268 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:55:58,269 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:55:58,273 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:55:58,273 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:55:58,273 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:55:58,273 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:55:58,273 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:55:58,273 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:55:58,273 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:55:58,273 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:55:58,273 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:55:58,273 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:55:58,273 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:55:58,273 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:55:58,273 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:55:58,273 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:55:58,273 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:55:58,273 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:55:58,274 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:55:58,274 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:55:58,274 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:55:58,274 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:55:58,274 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:55:58,274 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:55:58,274 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:55:58,274 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:55:58,274 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:55:58,274 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:55:58,274 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:55:58,274 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:55:58,274 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:55:58,274 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:55:58,275 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 39, in <module>
+    svg_path = chart.makeSVG()
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 584, in makeSVG
+    self.template = self.makeTemplate(minify)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 557, in makeTemplate
+    td = self._create_template_dictionary()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 549, in _create_template_dictionary
+    custom_format = dt.strftime('%Y-%-m-%-d %H:%M [%z]')  # Note the use of '-' to remove leading zeros
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+2024-08-18 12:57:28,075 - DEBUG - Starting Kerykeion
+2024-08-18 12:57:28,075 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:57:28,210 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:57:28,211 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:57:28,212 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:57:28,215 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:57:28,215 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:57:28,216 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:57:28,216 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:57:28,216 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:57:28,216 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:57:28,216 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:57:28,216 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:57:28,216 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:57:28,216 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:57:28,216 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:57:28,216 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:57:28,216 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:57:28,216 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:57:28,216 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:57:28,216 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:57:28,216 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:57:28,217 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:57:28,217 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:57:28,217 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:57:28,217 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:57:28,217 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:57:28,217 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:57:28,217 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:57:28,217 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:57:28,217 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:57:28,217 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:57:28,217 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:57:28,217 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:57:28,218 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:57:28,218 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 40, in <module>
+    svg_path = chart.makeSVG()
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 584, in makeSVG
+    self.template = self.makeTemplate(minify)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 557, in makeTemplate
+    td = self._create_template_dictionary()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 549, in _create_template_dictionary
+    custom_format = dt.strftime('%Y-%-m-%-d %H:%M [%z]')  # Note the use of '-' to remove leading zeros
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+2024-08-18 12:58:15,474 - DEBUG - Starting Kerykeion
+2024-08-18 12:58:15,474 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:58:15,663 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:58:15,665 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:58:15,666 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:58:15,672 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:58:15,672 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:58:15,672 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:58:15,672 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:58:15,672 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:58:15,673 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:58:15,673 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:58:15,673 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:58:15,673 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:58:15,673 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:58:15,673 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:58:15,673 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:58:15,673 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:58:15,673 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:58:15,673 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:58:15,673 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:58:15,673 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:58:15,674 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:58:15,674 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:58:15,674 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:58:15,674 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:58:15,674 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:58:15,675 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:58:15,675 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:58:15,675 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:58:15,675 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:58:15,675 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:58:15,675 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:58:15,675 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:58:15,675 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:58:15,677 - ERROR - Bir hata oluþtu:
+Traceback (most recent call last):
+  File "C:\Users\musta\OneDrive\Masaüstü\swiss\test_kerykeion.py", line 47, in <module>
+    svg_path = chart.makeSVG()
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 584, in makeSVG
+    self.template = self.makeTemplate(minify)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 557, in makeTemplate
+    td = self._create_template_dictionary()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\charts\kerykeion_chart_svg.py", line 549, in _create_template_dictionary
+    custom_format = dt.strftime('%Y-%-m-%-d %H:%M [%z]')  # Note the use of '-' to remove leading zeros
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+2024-08-18 12:59:30,696 - DEBUG - Starting Kerykeion
+2024-08-18 12:59:30,697 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 12:59:30,856 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:59:30,857 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 12:59:30,858 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 12:59:30,864 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:59:30,864 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:59:30,864 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:59:30,864 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:59:30,864 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:59:30,864 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:59:30,864 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:59:30,864 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:59:30,864 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:59:30,864 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:59:30,864 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:59:30,864 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:59:30,865 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:59:30,865 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:59:30,865 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:59:30,865 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:59:30,865 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:59:30,865 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:59:30,865 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:59:30,865 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:59:30,865 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:59:30,865 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:59:30,865 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:59:30,865 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:59:30,866 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:59:30,866 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:59:30,866 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:59:30,866 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:59:30,866 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:59:30,866 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:59:30,882 - DEBUG - Template dictionary keys: dict_keys(['color_style_tag', 'chart_height', 'chart_width', 'stringName', 'viewbox', 'transitRing', 'degreeRing', 'first_circle', 'second_circle', 'third_circle', 'makeAspectGrid', 'makeAspects', 'stringTitle', 'bottomLeft0', 'bottomLeft1', 'bottomLeft2', 'bottomLeft3', 'bottomLeft4', 'moon_phase', 'stringLocation', 'stringLat', 'stringLon', 'stringPosition', 'paper_color_0', 'paper_color_1', 'planets_color_0', 'planets_color_1', 'planets_color_2', 'planets_color_3', 'planets_color_4', 'planets_color_5', 'planets_color_6', 'planets_color_7', 'planets_color_8', 'planets_color_9', 'planets_color_10', 'planets_color_11', 'planets_color_12', 'planets_color_13', 'planets_color_14', 'planets_color_15', 'planets_color_16', 'planets_color_17', 'zodiac_color_0', 'zodiac_color_1', 'zodiac_color_2', 'zodiac_color_3', 'zodiac_color_4', 'zodiac_color_5', 'zodiac_color_6', 'zodiac_color_7', 'zodiac_color_8', 'zodiac_color_9', 'zodiac_color_10', 'zodiac_color_11', 'orb_color_0', 'orb_color_30', 'orb_color_45', 'orb_color_60', 'orb_color_72', 'orb_color_90', 'orb_color_120', 'orb_color_135', 'orb_color_144', 'orb_color_150', 'orb_color_180', 'makeZodiac', 'makeHousesGrid', 'makeHouses', 'makePlanets', 'elements_percentages', 'makePlanetGrid', 'stringDateTime'])
+2024-08-18 12:59:30,885 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 12:59:30,885 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 12:59:30,885 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 12:59:30,885 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 12:59:30,885 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 12:59:30,886 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 12:59:30,886 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 12:59:30,886 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 12:59:30,886 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 12:59:30,886 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 12:59:30,886 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 12:59:30,886 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 12:59:30,886 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 12:59:30,886 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 12:59:30,886 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 12:59:30,886 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 12:59:30,886 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 12:59:30,887 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 12:59:30,887 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 12:59:30,887 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 12:59:30,887 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 12:59:30,887 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 12:59:30,887 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 12:59:30,887 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 12:59:30,887 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 12:59:30,887 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 12:59:30,887 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 12:59:30,888 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 12:59:30,888 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 12:59:30,888 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 12:59:30,890 - INFO - SVG Generated Correctly in: C:\Users\musta\Documents\Tuðrul - Natal Chart.svg
+2024-08-18 13:03:16,905 - DEBUG - Starting Kerykeion
+2024-08-18 13:03:16,905 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 13:03:17,048 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 13:03:17,050 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 13:03:17,051 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 13:03:17,055 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 13:03:17,056 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 13:03:17,056 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 13:03:17,056 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 13:03:17,056 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 13:03:17,056 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 13:03:17,056 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 13:03:17,056 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 13:03:17,056 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 13:03:17,056 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 13:03:17,056 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 13:03:17,056 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 13:03:17,056 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 13:03:17,056 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 13:03:17,056 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 13:03:17,056 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 13:03:17,057 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 13:03:17,057 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 13:03:17,057 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 13:03:17,057 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 13:03:17,057 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 13:03:17,057 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 13:03:17,057 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 13:03:17,057 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 13:03:17,057 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 13:03:17,057 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 13:03:17,057 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 13:03:17,057 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 13:03:17,057 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 13:03:17,057 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 13:03:17,059 - DEBUG - Template dictionary keys: dict_keys(['color_style_tag', 'chart_height', 'chart_width', 'stringName', 'viewbox', 'transitRing', 'degreeRing', 'first_circle', 'second_circle', 'third_circle', 'makeAspectGrid', 'makeAspects', 'stringTitle', 'bottomLeft0', 'bottomLeft1', 'bottomLeft2', 'bottomLeft3', 'bottomLeft4', 'moon_phase', 'stringLocation', 'stringLat', 'stringLon', 'stringPosition', 'paper_color_0', 'paper_color_1', 'planets_color_0', 'planets_color_1', 'planets_color_2', 'planets_color_3', 'planets_color_4', 'planets_color_5', 'planets_color_6', 'planets_color_7', 'planets_color_8', 'planets_color_9', 'planets_color_10', 'planets_color_11', 'planets_color_12', 'planets_color_13', 'planets_color_14', 'planets_color_15', 'planets_color_16', 'planets_color_17', 'zodiac_color_0', 'zodiac_color_1', 'zodiac_color_2', 'zodiac_color_3', 'zodiac_color_4', 'zodiac_color_5', 'zodiac_color_6', 'zodiac_color_7', 'zodiac_color_8', 'zodiac_color_9', 'zodiac_color_10', 'zodiac_color_11', 'orb_color_0', 'orb_color_30', 'orb_color_45', 'orb_color_60', 'orb_color_72', 'orb_color_90', 'orb_color_120', 'orb_color_135', 'orb_color_144', 'orb_color_150', 'orb_color_180', 'makeZodiac', 'makeHousesGrid', 'makeHouses', 'makePlanets', 'elements_percentages', 'makePlanetGrid', 'stringDateTime'])
+2024-08-18 13:03:17,062 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 13:03:17,062 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 13:03:17,062 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 13:03:17,062 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 13:03:17,063 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 13:03:17,063 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 13:03:17,063 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 13:03:17,063 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 13:03:17,063 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 13:03:17,063 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 13:03:17,063 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 13:03:17,063 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 13:03:17,063 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 13:03:17,063 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 13:03:17,063 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 13:03:17,063 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 13:03:17,063 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 13:03:17,063 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 13:03:17,063 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 13:03:17,064 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 13:03:17,064 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 13:03:17,064 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 13:03:17,064 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 13:03:17,064 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 13:03:17,064 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 13:03:17,064 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 13:03:17,064 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 13:03:17,064 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 13:03:17,064 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 13:03:17,064 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 13:03:17,067 - INFO - SVG Generated Correctly in: C:\Users\musta\OneDrive\Masaüstü\swiss\Tuðrul - Natal Chart.svg
+2024-08-18 15:12:13,420 - DEBUG - Starting Kerykeion
+2024-08-18 15:12:13,420 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 15:12:13,550 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 15:12:13,552 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 15:12:13,553 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 15:12:13,557 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 15:12:13,557 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 15:12:13,557 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 15:12:13,557 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 15:12:13,557 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 15:12:13,557 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 15:12:13,557 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 15:12:13,557 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 15:12:13,557 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 15:12:13,557 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 15:12:13,557 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 15:12:13,557 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 15:12:13,557 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 15:12:13,557 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 15:12:13,557 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 15:12:13,558 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 15:12:13,558 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 15:12:13,558 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 15:12:13,558 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 15:12:13,558 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 15:12:13,558 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 15:12:13,558 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 15:12:13,558 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 15:12:13,558 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 15:12:13,558 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 15:12:13,558 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 15:12:13,558 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 15:12:13,558 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 15:12:13,558 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 15:12:13,558 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 15:12:13,561 - DEBUG - Template dictionary keys: dict_keys(['color_style_tag', 'chart_height', 'chart_width', 'stringName', 'viewbox', 'transitRing', 'degreeRing', 'first_circle', 'second_circle', 'third_circle', 'makeAspectGrid', 'makeAspects', 'stringTitle', 'bottomLeft0', 'bottomLeft1', 'bottomLeft2', 'bottomLeft3', 'bottomLeft4', 'moon_phase', 'stringLocation', 'stringLat', 'stringLon', 'stringPosition', 'paper_color_0', 'paper_color_1', 'planets_color_0', 'planets_color_1', 'planets_color_2', 'planets_color_3', 'planets_color_4', 'planets_color_5', 'planets_color_6', 'planets_color_7', 'planets_color_8', 'planets_color_9', 'planets_color_10', 'planets_color_11', 'planets_color_12', 'planets_color_13', 'planets_color_14', 'planets_color_15', 'planets_color_16', 'planets_color_17', 'zodiac_color_0', 'zodiac_color_1', 'zodiac_color_2', 'zodiac_color_3', 'zodiac_color_4', 'zodiac_color_5', 'zodiac_color_6', 'zodiac_color_7', 'zodiac_color_8', 'zodiac_color_9', 'zodiac_color_10', 'zodiac_color_11', 'orb_color_0', 'orb_color_30', 'orb_color_45', 'orb_color_60', 'orb_color_72', 'orb_color_90', 'orb_color_120', 'orb_color_135', 'orb_color_144', 'orb_color_150', 'orb_color_180', 'makeZodiac', 'makeHousesGrid', 'makeHouses', 'makePlanets', 'elements_percentages', 'makePlanetGrid', 'stringDateTime'])
+2024-08-18 15:12:13,563 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 15:12:13,563 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 15:12:13,563 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 15:12:13,563 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 15:12:13,563 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 15:12:13,563 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 15:12:13,563 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 15:12:13,563 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 15:12:13,564 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 15:12:13,564 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 15:12:13,564 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 15:12:13,564 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 15:12:13,564 - DEBUG - planet: 12, degree: 302.0852068755915
+2024-08-18 15:12:13,564 - DEBUG - planet: 13, degree: 233.92674983337474
+2024-08-18 15:12:13,564 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 15:12:13,564 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 15:12:13,564 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 15:12:13,564 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 15:12:13,564 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 15:12:13,564 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 15:12:13,564 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 15:12:13,564 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 15:12:13,564 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 15:12:13,564 - DEBUG - Mars, 15.831159428111988, 1.7574706124961779
+2024-08-18 15:12:13,564 - DEBUG - Mc, 1.7574706124961779, 9.24313593893936
+2024-08-18 15:12:13,565 - DEBUG - Pluto, 9.24313593893936, 54.13603968082447
+2024-08-18 15:12:13,565 - DEBUG - Neptune, 54.13603968082447, 4.779281422452925
+2024-08-18 15:12:13,565 - DEBUG - Asc, 4.779281422452925, 2.944746889398175
+2024-08-18 15:12:13,565 - DEBUG - Uranus, 2.944746889398175, 7.758688406112128
+2024-08-18 15:12:13,565 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 15:12:13,567 - INFO - SVG Generated Correctly in: C:\Users\musta\OneDrive\Masaüstü\swiss\Tuðrul - Natal Chart.svg
+2024-08-18 15:22:10,141 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.30:5000
+2024-08-18 15:22:10,142 - INFO - [33mPress CTRL+C to quit[0m
+2024-08-18 15:22:10,145 - INFO -  * Restarting with stat
+2024-08-18 15:22:12,188 - WARNING -  * Debugger is active!
+2024-08-18 15:22:12,206 - INFO -  * Debugger PIN: 135-437-920
+2024-08-18 15:23:07,365 - INFO - 127.0.0.1 - - [18/Aug/2024 15:23:07] "OPTIONS /calculate_chart HTTP/1.1" 200 -
+2024-08-18 15:23:07,619 - DEBUG - Starting Kerykeion
+2024-08-18 15:23:07,620 - WARNING - 
+********
+NO GEONAMES USERNAME SET!
+Using the default geonames username is not recommended, please set a custom one!
+You can get one for free here:
+https://www.geonames.org/login
+Keep in mind that the default username is limited to 2000 requests per hour and is shared with everyone else using this library.
+********
+2024-08-18 15:23:07,809 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 15:23:07,811 - DEBUG - Kerykeion config file path: C:\Users\musta\AppData\Roaming\Python\Python312\site-packages\kerykeion\settings\kr.config.json
+2024-08-18 15:23:07,812 - DEBUG - Relevant aspects not already calculated, calculating now...
+2024-08-18 15:23:07,816 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 15:23:07,816 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 15:23:07,817 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 15:23:07,817 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 15:23:07,817 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 15:23:07,817 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 15:23:07,817 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 15:23:07,817 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 15:23:07,817 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 15:23:07,817 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 15:23:07,817 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 15:23:07,817 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 15:23:07,817 - DEBUG - planet: 12, degree: 302.2102413484827
+2024-08-18 15:23:07,817 - DEBUG - planet: 13, degree: 234.24328968667507
+2024-08-18 15:23:07,818 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 15:23:07,818 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 15:23:07,818 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 15:23:07,818 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 15:23:07,818 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 15:23:07,818 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 15:23:07,818 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 15:23:07,818 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 15:23:07,818 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 15:23:07,818 - DEBUG - Mars, 15.831159428111988, 2.074010465796505
+2024-08-18 15:23:07,818 - DEBUG - Mc, 2.074010465796505, 8.926596085639034
+2024-08-18 15:23:07,818 - DEBUG - Pluto, 8.926596085639034, 54.13603968082447
+2024-08-18 15:23:07,819 - DEBUG - Neptune, 54.13603968082447, 4.904315895344155
+2024-08-18 15:23:07,819 - DEBUG - Asc, 4.904315895344155, 2.8197124165069454
+2024-08-18 15:23:07,819 - DEBUG - Uranus, 2.8197124165069454, 7.758688406112128
+2024-08-18 15:23:07,819 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 15:23:07,820 - DEBUG - Template dictionary keys: dict_keys(['color_style_tag', 'chart_height', 'chart_width', 'stringName', 'viewbox', 'transitRing', 'degreeRing', 'first_circle', 'second_circle', 'third_circle', 'makeAspectGrid', 'makeAspects', 'stringTitle', 'bottomLeft0', 'bottomLeft1', 'bottomLeft2', 'bottomLeft3', 'bottomLeft4', 'moon_phase', 'stringLocation', 'stringLat', 'stringLon', 'stringPosition', 'paper_color_0', 'paper_color_1', 'planets_color_0', 'planets_color_1', 'planets_color_2', 'planets_color_3', 'planets_color_4', 'planets_color_5', 'planets_color_6', 'planets_color_7', 'planets_color_8', 'planets_color_9', 'planets_color_10', 'planets_color_11', 'planets_color_12', 'planets_color_13', 'planets_color_14', 'planets_color_15', 'planets_color_16', 'planets_color_17', 'zodiac_color_0', 'zodiac_color_1', 'zodiac_color_2', 'zodiac_color_3', 'zodiac_color_4', 'zodiac_color_5', 'zodiac_color_6', 'zodiac_color_7', 'zodiac_color_8', 'zodiac_color_9', 'zodiac_color_10', 'zodiac_color_11', 'orb_color_0', 'orb_color_30', 'orb_color_45', 'orb_color_60', 'orb_color_72', 'orb_color_90', 'orb_color_120', 'orb_color_135', 'orb_color_144', 'orb_color_150', 'orb_color_180', 'makeZodiac', 'makeHousesGrid', 'makeHouses', 'makePlanets', 'elements_percentages', 'makePlanetGrid', 'stringDateTime'])
+2024-08-18 15:23:07,824 - DEBUG - planet: 0, degree: 174.68984495500587
+2024-08-18 15:23:07,824 - DEBUG - planet: 1, degree: 5.7388176636634
+2024-08-18 15:23:07,824 - DEBUG - planet: 2, degree: 156.84650197432933
+2024-08-18 15:23:07,824 - DEBUG - planet: 3, degree: 216.33811979276658
+2024-08-18 15:23:07,824 - DEBUG - planet: 4, degree: 232.16927922087856
+2024-08-18 15:23:07,824 - DEBUG - planet: 5, degree: 312.7886421711018
+2024-08-18 15:23:07,824 - DEBUG - planet: 6, degree: 18.613006703040575
+2024-08-18 15:23:07,824 - DEBUG - planet: 7, degree: 305.02995376498967
+2024-08-18 15:23:07,824 - DEBUG - planet: 8, degree: 297.30592545313857
+2024-08-18 15:23:07,824 - DEBUG - planet: 9, degree: 243.1698857723141
+2024-08-18 15:23:07,824 - DEBUG - planet: 10, degree: 169.75183692641593
+2024-08-18 15:23:07,825 - DEBUG - planet: 11, degree: 211.69894714520547
+2024-08-18 15:23:07,825 - DEBUG - planet: 12, degree: 302.2102413484827
+2024-08-18 15:23:07,825 - DEBUG - planet: 13, degree: 234.24328968667507
+2024-08-18 15:23:07,825 - DEBUG - planet: 14, degree: 170.22227737023832
+2024-08-18 15:23:07,825 - DEBUG - Moon, 52.950175492561584, 12.874189039377175
+2024-08-18 15:23:07,825 - DEBUG - Saturn, 12.874189039377175, 138.23349527128875
+2024-08-18 15:23:07,825 - DEBUG - Mercury, 138.23349527128875, 12.905334952086605
+2024-08-18 15:23:07,825 - DEBUG - True_Node, 12.905334952086605, 0.47044044382238326
+2024-08-18 15:23:07,825 - DEBUG - Mean_Lilith, 0.47044044382238326, 4.467567584767551
+2024-08-18 15:23:07,825 - DEBUG - Sun, 4.467567584767551, 37.0091021901996
+2024-08-18 15:23:07,825 - DEBUG - Chiron, 37.0091021901996, 4.639172647561111
+2024-08-18 15:23:07,826 - DEBUG - Venus, 4.639172647561111, 15.831159428111988
+2024-08-18 15:23:07,826 - DEBUG - Mars, 15.831159428111988, 2.074010465796505
+2024-08-18 15:23:07,826 - DEBUG - Mc, 2.074010465796505, 8.926596085639034
+2024-08-18 15:23:07,826 - DEBUG - Pluto, 8.926596085639034, 54.13603968082447
+2024-08-18 15:23:07,826 - DEBUG - Neptune, 54.13603968082447, 4.904315895344155
+2024-08-18 15:23:07,826 - DEBUG - Asc, 4.904315895344155, 2.8197124165069454
+2024-08-18 15:23:07,826 - DEBUG - Uranus, 2.8197124165069454, 7.758688406112128
+2024-08-18 15:23:07,826 - DEBUG - Jupiter, 7.758688406112128, 52.950175492561584
+2024-08-18 15:23:07,829 - INFO - SVG Generated Correctly in: C:\Users\musta\OneDrive\Masaüstü\swiss\1 - Natal Chart.svg
+2024-08-18 15:23:07,830 - INFO - 127.0.0.1 - - [18/Aug/2024 15:23:07] "POST /calculate_chart HTTP/1.1" 200 -
+2024-08-18 15:23:08,156 - INFO - 127.0.0.1 - - [18/Aug/2024 15:23:08] "[33mGET /get_svg/null HTTP/1.1[0m" 404 -
