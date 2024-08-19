@@ -1,9 +1,8 @@
 import os
 import sys
-from pathlib import Path
-from kerykeion import AstrologicalSubject, Report, KerykeionChartSVG
+from kerykeion import AstrologicalSubject, Report
 import logging
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # Flask uygulamasını oluştur
@@ -15,7 +14,7 @@ logging.basicConfig(level=logging.DEBUG, filename="kerykeion.log", filemode="a",
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Swiss Ephemeris dosyalarının tam yolunu belirtelim
-sweph_path = r"C:\Users\musta\OneDrive\Masaüstü\swiss\kerykeion\kerykeion\sweph"
+sweph_path = os.path.join(os.path.dirname(__file__), "sweph")
 os.environ["SWISSEPH_PATH"] = sweph_path
 
 print(f"Swiss Ephemeris dosyalarının konumu: {sweph_path}")
@@ -45,23 +44,27 @@ def calculate_chart():
         report = Report(subject)
         report_text = report.get_full_report()
 
-        # SVG doğum haritası oluştur
-        output_dir = r"C:\Users\musta\OneDrive\Masaüstü\swiss"
-        
-        # Çıktı dizininin var olduğundan emin olun
-        os.makedirs(output_dir, exist_ok=True)
-        
-        print("\nSVG oluşturuluyor...")
-        chart = KerykeionChartSVG(subject, chart_type="Natal", new_output_directory=output_dir)
-        print(f"Chart nesnesi oluşturuldu: {chart}")
-        
-        svg_path = chart.makeSVG()
-        print(f"SVG doğum haritası şu konumda oluşturuldu: {svg_path}")
+        # Gezegen pozisyonlarını al
+        planet_positions = {}
+        for planet in subject.planets_list:
+            planet_positions[planet.name] = {
+                'sign': planet.sign,
+                'position': planet.position
+            }
+
+        # Ev pozisyonlarını al
+        house_positions = {}
+        for i, house in enumerate(subject.houses_list, start=1):
+            house_positions[f"House {i}"] = {
+                'sign': house.sign,
+                'position': house.position
+            }
 
         # Sonuçları JSON olarak döndür
         return jsonify({
             'report': report_text,
-            'svg_path': svg_path
+            'planet_positions': planet_positions,
+            'house_positions': house_positions
         })
 
     except Exception as e:
@@ -74,13 +77,6 @@ def calculate_chart():
         traceback.print_exc()
 
         return jsonify({'error': str(e)}), 500
-
-@app.route('/get_svg/<path:filename>', methods=['GET'])
-def get_svg(filename):
-    try:
-        return send_file(filename, mimetype='image/svg+xml')
-    except Exception as e:
-        return jsonify({'error': str(e)}), 404
 
 @app.route('/version', methods=['GET'])
 def get_version():
@@ -96,5 +92,4 @@ def get_version():
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
