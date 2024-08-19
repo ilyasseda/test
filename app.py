@@ -1,5 +1,6 @@
 import os
 import sys
+from pathlib import Path
 from kerykeion import AstrologicalSubject, Report
 import logging
 from flask import Flask, request, jsonify
@@ -12,6 +13,10 @@ CORS(app)
 # Logging ayarları
 logging.basicConfig(level=logging.DEBUG, filename="kerykeion.log", filemode="a",
                     format="%(asctime)s - %(levelname)s - %(message)s")
+
+# Kerykeion klasörünün yolunu belirle
+kerykeion_path = os.path.join(os.path.dirname(__file__), "1Kerykeion")
+sys.path.insert(0, kerykeion_path)
 
 @app.route('/calculate_chart', methods=['POST'])
 def calculate_chart():
@@ -36,8 +41,8 @@ def calculate_chart():
         # Rapor oluştur
         report = Report(subject)
         
-        # Raporu al
-        report_text = report.return_all()
+        # Raporu yazdır
+        report_text = report.print_report()
 
         # Gezegen pozisyonlarını al
         planet_positions = {}
