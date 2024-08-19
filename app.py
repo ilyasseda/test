@@ -51,11 +51,11 @@ def calculate_chart():
 
         # Rapor oluştur
         report = Report(subject)
-        report_text = report.get_full_report()  # get_full_report kullanıyoruz
+        report_text = report.print_report()  # print_report kullanıyoruz
 
         # Gezegen pozisyonlarını al
         planet_positions = {}
-        for planet in subject.planets_list:
+        for planet in subject.planets:  # planets_list yerine planets kullanıyoruz
             planet_positions[planet.name] = {
                 'sign': planet.sign,
                 'position': planet.position
@@ -63,7 +63,7 @@ def calculate_chart():
 
         # Ev pozisyonlarını al
         house_positions = {}
-        for i, house in enumerate(subject.houses_list, start=1):
+        for i, house in enumerate(subject.houses, start=1):  # houses_list yerine houses kullanıyoruz
             house_positions[f"House {i}"] = {
                 'sign': house.sign,
                 'position': house.position
