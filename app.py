@@ -1,7 +1,6 @@
 import os
 import sys
 from pathlib import Path
-from kerykeion import AstrologicalSubject, Report
 import logging
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -17,6 +16,14 @@ logging.basicConfig(level=logging.DEBUG, filename="kerykeion.log", filemode="a",
 # Kerykeion klasörünün yolunu belirle
 kerykeion_path = os.path.join(os.path.dirname(__file__), "1Kerykeion")
 sys.path.insert(0, kerykeion_path)
+
+# Kerykeion'u import et
+try:
+    from kerykeion import AstrologicalSubject, Report
+    logging.info("Kerykeion successfully imported")
+except ImportError as e:
+    logging.error(f"Error importing Kerykeion: {e}")
+    raise
 
 @app.route('/calculate_chart', methods=['POST'])
 def calculate_chart():
