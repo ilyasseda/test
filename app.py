@@ -1,7 +1,6 @@
 import os
 import sys
-from pathlib import Path
-from kerykeion import AstrologicalSubject, Report, KerykeionChartSVG
+from kerykeion import AstrologicalSubject, Report
 import logging
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -14,16 +13,12 @@ CORS(app)
 logging.basicConfig(level=logging.DEBUG, filename="kerykeion.log", filemode="a",
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
-# Swiss Ephemeris dosyalarının tam yolunu belirtelim
-sweph_path = os.path.join(os.path.dirname(__file__), "sweph")
-os.environ["SWISSEPH_PATH"] = sweph_path
-
-print(f"Swiss Ephemeris dosyalarının konumu: {sweph_path}")
-
 @app.route('/calculate_chart', methods=['POST'])
 def calculate_chart():
     try:
         data = request.json
+        logging.info(f"Received data: {data}")
+
         name = data.get('name')
         year = data.get('year')
         month = data.get('month')
@@ -41,8 +36,8 @@ def calculate_chart():
         # Rapor oluştur
         report = Report(subject)
         
-        # Raporu yazdır
-        report_text = report.__str__()
+        # Raporu al
+        report_text = report.return_all()
 
         # Gezegen pozisyonlarını al
         planet_positions = {}
@@ -66,6 +61,7 @@ def calculate_chart():
             'planet_positions': planet_positions,
             'house_positions': house_positions
         }
+        logging.info("Calculation successful")
         return jsonify(result)
 
     except Exception as e:
