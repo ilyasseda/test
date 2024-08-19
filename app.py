@@ -10,19 +10,25 @@ app = Flask(__name__)
 CORS(app)
 
 # Logging ayarları
-logging.basicConfig(level=logging.DEBUG, filename="kerykeion.log", filemode="a",
-                    format="%(asctime)s - %(levelname)s - %(message)s")
+if __name__ != '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
+else:
+    logging.basicConfig(level=logging.DEBUG)
 
 # Swiss Ephemeris dosyalarının tam yolunu belirtelim
 sweph_path = os.path.join(os.path.dirname(__file__), "sweph")
 os.environ["SWISSEPH_PATH"] = sweph_path
 
-print(f"Swiss Ephemeris dosyalarının konumu: {sweph_path}")
+app.logger.info(f"Swiss Ephemeris dosyalarının konumu: {sweph_path}")
 
 @app.route('/calculate_chart', methods=['POST'])
 def calculate_chart():
     try:
         data = request.json
+        app.logger.info(f"Received data: {data}")
+        
         name = data.get('name')
         year = data.get('year')
         month = data.get('month')
@@ -34,6 +40,9 @@ def calculate_chart():
         lat = data.get('lat')
         lng = data.get('lng')
 
+        app.logger.info(f"Input parameters: name={name}, year={year}, month={month}, day={day}, "
+                        f"hour={hour}, minute={minute}, city={city}, nation={nation}, lat={lat}, lng={lng}")
+
         # AstrologicalSubject oluştur
         subject = AstrologicalSubject(name, year, month, day, hour, minute, 
                                       city=city, nation=nation,
@@ -42,7 +51,7 @@ def calculate_chart():
 
         # Rapor oluştur
         report = Report(subject)
-        report_text = report.get_full_report()
+        report_text = report.get_short_report()  # Kısa rapor kullanıyoruz
 
         # Gezegen pozisyonlarını al
         planet_positions = {}
@@ -61,21 +70,19 @@ def calculate_chart():
             }
 
         # Sonuçları JSON olarak döndür
-        return jsonify({
+        result = {
             'report': report_text,
             'planet_positions': planet_positions,
             'house_positions': house_positions
-        })
+        }
+        app.logger.info(f"Calculation successful. Returning result: {result}")
+        return jsonify(result)
 
     except Exception as e:
-        print(f"Bir hata oluştu: {e}")
-        print(f"Hata türü: {type(e).__name__}")
-        logging.exception("Bir hata oluştu:")
+        app.logger.error(f"An error occurred: {str(e)}")
+        app.logger.error(f"Error type: {type(e).__name__}")
+        app.logger.exception("Exception details:")
         
-        # Hata stack trace'ini yazdıralım
-        import traceback
-        traceback.print_exc()
-
         return jsonify({'error': str(e)}), 500
 
 @app.route('/version', methods=['GET'])
