@@ -1,4 +1,4 @@
-flask
-flask-cors
-gunicorn
-kerykeion
+Flask==2.0.1
+Flask-CORS==3.0.10
+gunicorn==20.1.0
+kerykeion==2.2.7
