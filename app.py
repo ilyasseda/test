@@ -51,7 +51,7 @@ def calculate_chart():
 
         # Rapor oluştur
         report = Report(subject)
-        report_text = report.get_short_report()  # Kısa rapor kullanıyoruz
+        report_text = report.get_full_report()  # get_full_report kullanıyoruz
 
         # Gezegen pozisyonlarını al
         planet_positions = {}
@@ -99,4 +99,5 @@ def get_version():
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
