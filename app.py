@@ -1,6 +1,5 @@
 import os
 import sys
-from pathlib import Path
 import logging
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -12,10 +11,6 @@ CORS(app)
 # Logging ayarları
 logging.basicConfig(level=logging.DEBUG, filename="kerykeion.log", filemode="a",
                     format="%(asctime)s - %(levelname)s - %(message)s")
-
-# Kerykeion klasörünün yolunu belirle
-kerykeion_path = os.path.join(os.path.dirname(__file__), "1Kerykeion")
-sys.path.insert(0, kerykeion_path)
 
 # Kerykeion'u import et
 try:
